@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="BYENDA GROUP — système privé de direction et de gestion">
+<title>BYENDA GROUP — Direction générale</title>
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--bg:#f3f5f8;--panel:#fff;--ink:#172033;--muted:#738096;--line:#e6eaf0;--navy:#101827;--gold:#c5a46d;--green:#18845b;--red:#bd4c4c;--amber:#a36b16;--shadow:0 12px 35px rgba(20,35,55,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.shell{max-width:1400px;margin:auto;min-height:100vh;display:grid;grid-template-columns:250px 1fr}
+aside{background:var(--navy);color:#fff;padding:24px 17px;display:flex;flex-direction:column;gap:20px;min-height:100vh;position:sticky;top:0;height:100vh}
+.brand{padding:4px 10px}.brand b{font-size:19px;letter-spacing:2px}.brand small{display:block;color:#aab4c4;letter-spacing:2px;font-size:9px;margin-top:7px}
+.profile{display:flex;gap:11px;align-items:center;padding:12px 10px;border:1px solid #ffffff20;border-radius:14px}.avatar{width:38px;height:38px;border-radius:50%;background:#d5bd91;color:#182033;display:grid;place-items:center;font-weight:800}.profile small{display:block;color:#aab4c4;font-size:11px;margin-top:3px}
+.navlabel{font-size:9px;letter-spacing:1.7px;color:#718096;padding:5px 11px 0}nav{display:grid;gap:4px;overflow:auto}nav button{border:0;background:transparent;color:#bdc6d3;text-align:left;padding:11px;border-radius:10px;min-height:43px;touch-action:manipulation}nav button.active,nav button:hover{background:#ffffff20;color:white}nav span{display:inline-block;width:25px}
+.aside-note{margin-top:auto;color:#8995a8;font-size:11px;line-height:1.6;padding:10px}
+main{padding:28px 34px 60px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:23px}.eyebrow{font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700}.top h1{font-size:27px;margin:7px 0 0}.date{color:var(--muted);font-size:12px}
+.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--navy);color:white;font-weight:650}.btn.gold{background:var(--gold);color:#172033}.btn.light{background:#edf0f4;color:#253047}.btn.red{background:#fceeee;color:#a33838}.btn.small{padding:8px 11px;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:18px}.stat,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.stat{padding:16px}.stat label{color:var(--muted);font-size:12px}.stat strong{display:block;font-size:26px;margin:8px 0 3px}.stat small{color:var(--muted);font-size:11px}
+.cols{display:grid;grid-template-columns:1.25fr .9fr;gap:15px}.panel{padding:19px;margin-bottom:15px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.panel h2{font-size:16px;margin:0}.muted{color:var(--muted);font-size:12px;line-height:1.5}.dept,.agent,.task,.history,.event{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid var(--line)}.dept:first-of-type,.agent:first-of-type,.task:first-of-type,.event:first-of-type{border-top:0}.ico{width:39px;height:39px;display:grid;place-items:center;background:#f0f2f6;border-radius:12px;font-size:18px;flex:none}.grow{flex:1;min-width:0}.grow b{display:block;font-size:13px}.grow small{display:block;color:var(--muted);font-size:11px;margin-top:4px;line-height:1.45}.tag{font-size:10px;border-radius:20px;padding:5px 8px;background:#edf5f0;color:var(--green);white-space:nowrap}.tag.pending{background:#fff5e5;color:#9a6a18}.tag.off{background:#eef0f4;color:#667085}.tag.danger{background:#fceeee;color:#a33838}
+.progress{height:5px;background:#edf0f4;border-radius:9px;margin-top:9px;overflow:hidden}.progress i{display:block;height:100%;background:var(--gold)}
+.task input[type=checkbox]{width:17px;height:17px;accent-color:#18845b;flex:none}.task.done .grow b{text-decoration:line-through;color:#8993a2}
+.page{display:none}.page.active{display:block}.empty{padding:22px;text-align:center;color:var(--muted);font-size:13px}
+form{display:grid;gap:11px}.field{min-width:0}.field label{display:block;font-size:11px;color:var(--muted);margin:0 0 6px}input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink)}textarea{min-height:78px;resize:vertical}
+.cards2{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.mini{border:1px solid var(--line);border-radius:13px;padding:15px}.mini h3{font-size:14px;margin:9px 0 7px}.mini p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}
+.notice{background:#f8f3e9;border:1px solid #eee1c9;color:#65512f;padding:13px 15px;border-radius:12px;font-size:12px;line-height:1.55;margin-bottom:16px}
+.alert{border-left:3px solid var(--amber);background:#fff9ed;padding:11px 13px;border-radius:8px;margin:8px 0;font-size:12px}.alert.red{border-color:var(--red);background:#fff3f3}.alert.green{border-color:var(--green);background:#f0faf5}
+.rowwrap{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px}.toolbar>*{max-width:220px}
+.memory-card{padding:13px;border:1px solid var(--line);border-radius:12px;margin:9px 0}.memory-card b{font-size:13px}.memory-card p{font-size:12px;color:var(--muted);white-space:pre-wrap;line-height:1.5;margin:7px 0}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.cal-head,.cal-day{padding:8px 4px;text-align:center;font-size:11px}.cal-head{color:var(--muted);font-weight:700}.cal-day{background:#fff;border:1px solid var(--line);border-radius:9px;min-height:64px;text-align:left}.cal-day.today{border:2px solid var(--gold)}.cal-day.mutedday{opacity:.35}.cal-day strong{font-size:12px}.cal-day small{display:block;color:#8a641e;font-size:9px;margin-top:5px;overflow:hidden}
+footer{text-align:center;color:#9aa3b1;font-size:10px;margin-top:25px}
+.modal{position:fixed;inset:0;background:#10182788;display:none;align-items:center;justify-content:center;padding:18px;z-index:5}.modal.show{display:flex}.dialog{background:white;width:min(520px,100%);padding:22px;border-radius:18px;max-height:92vh;overflow:auto}.dialog h2{margin:0 0 16px;font-size:18px}.actions{display:flex;gap:8px;justify-content:flex-end;margin-top:7px;flex-wrap:wrap}
+@media(max-width:900px){.shell{display:block}aside{position:relative;height:auto;min-height:0;padding:13px 12px;gap:10px}.brand{padding:2px 4px}.profile{display:none}.navlabel{display:none}nav{display:flex;overflow-x:auto;gap:4px}nav button{white-space:nowrap;padding:9px 10px;font-size:12px;min-height:40px}nav span{width:auto;margin-right:5px}.aside-note{display:none}main{padding:21px 14px 42px}.grid{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}.top h1{font-size:23px}.date{display:none}}
+@media(max-width:470px){.cards2{grid-template-columns:1fr}.stat{padding:13px}.stat strong{font-size:22px}.panel{padding:15px}.calendar-grid{gap:3px}.cal-day{min-height:53px;padding:6px 3px}.cal-day small{font-size:8px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside>
+ <div class="brand"><b>BYENDA GROUP</b><small>DIGITAL OPERATIONS</small></div>
+ <div class="profile"><div class="avatar">JB</div><div><b id="side-director">Josué Byenda</b><small>Directeur général</small></div></div>
+ <div class="navlabel">PILOTAGE</div>
+ <nav id="nav">
+  <button class="active" data-page="dashboard"><span>⌂</span>Vue générale</button>
+  <button data-page="control"><span>◉</span>Centre de contrôle</button>
+  <button data-page="missions"><span>✓</span>Missions</button>
+  <button data-page="workshop"><span>⇄</span>Atelier des agents</button>
+  <button data-page="calendar"><span>▦</span>Calendrier intelligent</button>
+  <button data-page="memory"><span>▤</span>Mémoire entreprise</button>
+  <div class="navlabel">ORGANISATION</div>
+  <button data-page="departments"><span>▥</span>Départements</button>
+  <button data-page="agents"><span>◈</span>Agents IA</button>
+  <button data-page="history"><span>◷</span>Historique</button>
+  <button data-page="settings"><span>⚙</span>Paramètres</button>
+ </nav>
+ <div class="aside-note">Un espace privé pour organiser, mémoriser, piloter et faire progresser BYENDA GROUP.</div>
+</aside>
+<main>
+ <div class="top"><div><div class="eyebrow">DIRECTION GÉNÉRALE / <span id="crumb">VUE GÉNÉRALE</span></div><h1 id="heading">Tableau de bord</h1></div><div class="date" id="today"></div></div>
+
+ <section class="page active" id="dashboard">
+  <div class="notice"><b>Bienvenue au siège, Josué.</b> Cette version rassemble les outils de pilotage, les missions, le calendrier et la mémoire de l'entreprise. Les données sont enregistrées sur cet appareil : pense à exporter une sauvegarde.</div>
+  <div class="grid">
+   <div class="stat"><label>Missions ouvertes</label><strong id="stat-open">0</strong><small>À traiter ou en cours</small></div>
+   <div class="stat"><label>En retard</label><strong id="stat-late">0</strong><small>Échéances dépassées</small></div>
+   <div class="stat"><label>Agents répertoriés</label><strong id="stat-agents">0</strong><small>Équipe virtuelle</small></div>
+   <div class="stat"><label>Événements à venir</label><strong id="stat-events">0</strong><small>Calendrier de direction</small></div>
+  </div>
+  <div class="cols">
+   <div class="panel"><div class="panel-head"><h2>Missions prioritaires</h2><button class="btn light small" onclick="openModal('task')">+ Mission</button></div><div id="dash-tasks"></div></div>
+   <div class="panel"><div class="panel-head"><h2>À surveiller</h2><button class="btn light small" onclick="showPage('control')">Centre de contrôle</button></div><div id="dash-alerts"></div></div>
+  </div>
+  <div class="panel"><div class="panel-head"><h2>Prochains rendez-vous</h2><button class="btn light small" onclick="showPage('calendar')">Calendrier</button></div><div id="dash-events"></div></div>
+  <div class="panel"><div class="panel-head"><h2>Dernières activités</h2><span class="muted">Journal de direction</span></div><div id="dash-history"></div></div>
+ </section>
+
+ <section class="page" id="control">
+  <div class="notice"><b>Centre de contrôle.</b> Une lecture rapide de l'état de l'entreprise : retards, priorités, événements et décisions en attente.</div>
+  <div class="grid">
+   <div class="stat"><label>À faire</label><strong id="control-todo">0</strong><small>Missions non commencées</small></div>
+   <div class="stat"><label>En cours</label><strong id="control-progress">0</strong><small>Missions actives</small></div>
+   <div class="stat"><label>Terminées</label><strong id="control-done">0</strong><small>Missions clôturées</small></div>
+   <div class="stat"><label>Éléments mémoire</label><strong id="control-memory">0</strong><small>Connaissances conservées</small></div>
+  </div>
+  <div class="panel"><div class="panel-head"><h2>Alertes et points d'attention</h2><span class="muted">Actualisation automatique à l'ouverture</span></div><div id="control-alerts"></div></div>
+  <div class="panel"><div class="panel-head"><h2>Décisions de direction</h2><button class="btn small" onclick="openModal('decision')">+ Enregistrer une décision</button></div><div id="decision-list"></div></div>
+ </section>
+
+ <section class="page" id="missions">
+  <div class="panel-head"><div><h2>Gestion des missions</h2><div class="muted">Chaque mission possède un responsable, une priorité, un statut et une échéance.</div></div><button class="btn small" onclick="openModal('task')">+ Nouvelle mission</button></div>
+  <div class="toolbar"><select id="task-filter" onchange="renderTasks()"><option value="all">Tous les statuts</option><option value="À faire">À faire</option><option value="En cours">En cours</option><option value="Terminée">Terminée</option></select><select id="priority-filter" onchange="renderTasks()"><option value="all">Toutes les priorités</option><option>Urgente</option><option>Haute</option><option>Normale</option><option>Basse</option></select><input id="task-search" placeholder="Rechercher une mission…" oninput="renderTasks()"></div>
+  <div class="panel" id="task-list"></div>
+ </section>
+
+
+ <section class="page" id="workshop">
+  <div class="notice"><b>Atelier de collaboration des agents.</b> Crée un dossier, choisis les agents dans l'ordre, transmets le brief au premier, colle sa réponse, puis passe le relais au suivant. Les transmissions sont organisées ici ; l'exécution IA se fait dans Claude ou ChatGPT tant que les API ne sont pas connectées.</div>
+  <div class="panel">
+   <div class="panel-head"><div><h2>Nouvelle mission multi-agents</h2><div class="muted">Un même dossier peut passer de spécialiste en spécialiste.</div></div></div>
+   <form id="collab-form">
+    <div class="field"><label>Nom de la mission</label><input name="title" required placeholder="Ex. Étude et présentation d'un projet R+1"></div>
+    <div class="field"><label>Objectif et contexte</label><textarea name="brief" required placeholder="Explique le besoin, le contexte, les contraintes, les livrables et le résultat attendu…"></textarea></div>
+    <div class="field"><label>Équipe — choisis les agents dans l'ordre de collaboration</label><select name="agents" id="collab-agents" multiple size="7" required></select><small class="muted">Sur iPhone, touche les agents à sélectionner en maintenant la sélection multiple si nécessaire. Les agents passeront dans l'ordre affiché dans la liste.</small></div>
+    <div class="field"><label>Priorité</label><select name="priority"><option>Normale</option><option>Haute</option><option>Urgente</option></select></div>
+    <div class="actions"><button class="btn">Créer le dossier de collaboration</button></div>
+   </form>
+  </div>
+  <div class="panel"><div class="panel-head"><h2>Dossiers de collaboration</h2><span class="muted" id="collab-count">0 dossier</span></div><div id="collab-list"></div></div>
+  <div class="panel"><h2>Comment les agents travaillent ensemble</h2><p class="muted">1. Le premier agent reçoit le brief. 2. Tu colles sa réponse dans le dossier. 3. Le bouton « Préparer le relais » construit une nouvelle consigne avec le brief et le résultat précédent. 4. Tu l'envoies au prochain agent. 5. Tu peux terminer avec une synthèse de direction. Aucun résultat n'est inventé : chaque réponse doit être fournie par l'agent dans son outil.</p></div>
+ </section>
+
+ <section class="page" id="calendar">
+  <div class="panel-head"><div><h2>Calendrier intelligent</h2><div class="muted">Échéances des missions et événements planifiés au même endroit.</div></div><button class="btn small" onclick="openModal('event')">+ Événement</button></div>
+  <div class="panel">
+   <div class="panel-head"><button class="btn light small" onclick="changeMonth(-1)">←</button><h2 id="month-title">Mois</h2><button class="btn light small" onclick="changeMonth(1)">→</button></div>
+   <div class="calendar-grid" id="calendar-grid"></div>
+  </div>
+  <div class="panel"><div class="panel-head"><h2>Agenda à venir</h2><span class="muted">Missions + événements</span></div><div id="agenda-list"></div></div>
+ </section>
+
+ <section class="page" id="memory">
+  <div class="notice"><b>La mémoire de BYENDA GROUP.</b> Enregistre les informations durables de l'entreprise : vision, règles, méthodes, décisions, clients, projets et procédures. Cette mémoire est consultable et exportable.</div>
+  <div class="panel">
+   <div class="panel-head"><div><h2>Ajouter à la mémoire</h2><div class="muted">Écris des informations que l'entreprise ne doit pas perdre.</div></div></div>
+   <form id="memory-form">
+    <div class="field"><label>Titre</label><input name="title" required placeholder="Ex. Vision et principes de BYENDA GROUP"></div>
+    <div class="field"><label>Catégorie</label><select name="category"><option>Vision & stratégie</option><option>Règle interne</option><option>Procédure</option><option>Projet</option><option>Client & partenaire</option><option>Décision</option><option>Information importante</option></select></div>
+    <div class="field"><label>Contenu</label><textarea name="content" required placeholder="Décris précisément l'information à conserver…"></textarea></div>
+    <div class="actions"><button class="btn">Enregistrer dans la mémoire</button></div>
+   </form>
+  </div>
+  <div class="panel"><div class="panel-head"><h2>Base de connaissances</h2><span class="muted" id="memory-count">0 élément</span></div><input id="memory-search" placeholder="Rechercher dans la mémoire…" oninput="renderMemory()"><div id="memory-list"></div></div>
+ </section>
+
+ <section class="page" id="departments">
+  <div class="notice">Les départements structurent les responsabilités de BYENDA GROUP. Les agents et missions peuvent être rattachés à ces unités.</div><div class="cards2" id="department-list"></div>
+ </section>
+
+ <section class="page" id="agents">
+  <div class="notice"><b>Équipe virtuelle.</b> Chaque agent possède un mandat précis. Les profils créés ici définissent les responsabilités, mais ne deviennent pas automatiquement des IA autonomes sans connexion API ou plateforme.</div>
+  <div class="panel-head"><div><h2>Répertoire des agents</h2><div class="muted">Rôles, spécialités et état d'intégration</div></div><button class="btn small" onclick="openModal('agent')">+ Ajouter un agent</button></div>
+  <div class="panel" id="agent-list"></div>
+  <div class="panel"><div class="panel-head"><h2>Accès aux agents Claude existants</h2><span class="tag pending">Ouverture externe</span></div>
+   <div class="dept"><div class="ico">▤</div><div class="grow"><b>Agent Emploi — Carrière & Recrutement</b><small>Analyse d'offres · CV · lettres · candidatures</small></div><a class="btn small" href="https://claude.ai/artifact/PU9t1o33EZPT97BRFbGnc4" target="_blank" rel="noopener">Ouvrir ↗</a></div>
+   <div class="dept"><div class="ico">📷</div><div class="grow"><b>Agent Photos — Photos & contenu visuel</b><small>Analyse d'images · légendes · hashtags · publications</small></div><a class="btn small" href="https://claude.ai/artifact/T2RpJnRWFhaiZCaFxZ7QF3" target="_blank" rel="noopener">Ouvrir ↗</a></div>
+  </div>
+  <div class="panel"><h2>Mode d'emploi commun des agents</h2><p class="muted">Chaque agent doit : confirmer l'objectif, demander les informations manquantes, signaler ses hypothèses, livrer un résultat structuré, indiquer ce qui reste à valider et ne jamais prétendre avoir exécuté une action externe sans preuve.</p></div>
+ </section>
+
+ <section class="page" id="history">
+  <div class="panel"><div class="panel-head"><h2>Historique des opérations</h2><button class="btn light small" onclick="exportData()">Exporter</button></div><div id="history-list"></div></div>
+ </section>
+
+ <section class="page" id="settings">
+  <div class="panel"><h2 style="margin:0 0 8px">Paramètres de l'espace</h2><p class="muted">Les données sont conservées localement sur cet appareil.</p>
+   <div class="field"><label>Nom de la structure</label><input id="company-name" value="BYENDA GROUP"></div>
+   <div class="field" style="margin-top:12px"><label>Nom du directeur</label><input id="director-name" value="Josué Byenda"></div>
+   <div class="actions"><button class="btn" onclick="saveSettings()">Enregistrer</button></div>
+  </div>
+  <div class="panel"><h2>Sauvegarde et transfert</h2><p class="muted">Exporte régulièrement tes données pour les conserver ou les transférer vers un autre appareil. Pour synchroniser iPhone et PC automatiquement, il faudra ensuite une base de données cloud et des comptes sécurisés.</p><div class="rowwrap"><button class="btn light" onclick="exportData()">Exporter mes données (.json)</button><button class="btn light" onclick="document.getElementById('import-file').click()">Importer une sauvegarde</button><input type="file" id="import-file" accept="application/json" hidden onchange="importData(event)"></div></div>
+  <div class="panel"><h2>État technique</h2><p class="muted">Version 2.1 : gestion locale, mémoire, calendrier et répertoire d'agents. Les liens Claude ouvrent les agents dans leur environnement d'origine. L'API, les notifications push, les comptes utilisateurs et la synchronisation cloud restent à connecter.</p></div>
+ </section>
+ <footer>BYENDA GROUP · Direction & opérations · Version 2.1</footer>
+</main></div>
+
+<div class="modal" id="modal"><div class="dialog"><h2 id="modal-title">Nouvel élément</h2><form id="modal-form"></form></div></div>
+<script>
+const seed={
+ departments:[
+  {id:'arch',name:'Architecture & Design',icon:'⌂',desc:'Conception architecturale, design, plans, façades, rendus 3D et présentation des projets.'},
+  {id:'career',name:'Carrière & Recrutement',icon:'▤',desc:'Veille d’opportunités, CV, candidatures, entretiens et développement professionnel.'},
+  {id:'ops',name:'Opérations & Production',icon:'⚙',desc:'Exécution, coordination, qualité, suivi des opérations et livraison.'},
+  {id:'finance',name:'Finance & Administration',icon:'◈',desc:'Budgets, dépenses, recettes, facturation, conformité et administration.'},
+  {id:'com',name:'Communication & Marketing',icon:'✦',desc:'Identité, stratégie éditoriale, réseaux sociaux, prospection et visibilité.'},
+  {id:'dev',name:'Direction & Développement',icon:'↗',desc:'Stratégie, partenariats, clients, opportunités et décisions de direction.'}
+ ],
+ agents:[
+  {id:'a1',name:'Agent Photos',dept:'arch',platform:'Claude',role:'Analyser les photos, proposer des améliorations réalistes, rédiger des légendes et préparer des contenus visuels.',status:'Lien Claude disponible',link:'https://claude.ai/artifact/T2RpJnRWFhaiZCaFxZ7QF3'},
+  {id:'a2',name:'Agent Emploi — Carrière & Recrutement',dept:'career',platform:'Claude',role:'Analyser les offres, adapter les CV, préparer les lettres, organiser les candidatures et suivre les réponses.',status:'Lien Claude disponible',link:'https://claude.ai/artifact/PU9t1o33EZPT97BRFbGnc4'},
+  {id:'a3',name:'Yéléni — Conseiller de direction',dept:'dev',platform:'ChatGPT',role:'Aider à structurer les idées, clarifier les décisions et organiser les priorités.',status:'Assistant conversationnel'},
+  {id:'a4',name:'Agent Architecture & Design',dept:'arch',platform:'À connecter',role:'Développer les concepts architecturaux, analyser les besoins, proposer des organisations spatiales, matériaux, façades, plans de travail et présentations.',status:'Profil préparé'},
+  {id:'a5',name:'Agent Direction — Directeur de stratégie',dept:'dev',platform:'À connecter',role:'Analyser les objectifs, définir les priorités, préparer les décisions, suivre les indicateurs et produire les notes stratégiques.',status:'Profil préparé'},
+  {id:'a6',name:'Agent Opérations — Chef de projet',dept:'ops',platform:'À connecter',role:'Transformer les objectifs en plans d’action, répartir les tâches, suivre les délais, identifier les risques et rendre compte de l’avancement.',status:'Profil préparé'},
+  {id:'a7',name:'Agent Finance — Directeur financier',dept:'finance',platform:'À connecter',role:'Construire les budgets, suivre dépenses et recettes, analyser les coûts, préparer les devis et tableaux de trésorerie. Les chiffres doivent être vérifiés.',status:'Profil préparé'},
+  {id:'a8',name:'Agent Communication & Marketing',dept:'com',platform:'À connecter',role:'Construire la stratégie de marque, préparer les campagnes, calendriers éditoriaux, contenus, offres commerciales et bilans de performance.',status:'Profil préparé'},
+  {id:'a9',name:'Agent Administration — Secrétaire général',dept:'finance',platform:'À connecter',role:'Organiser les courriers, réunions, comptes rendus, dossiers, contrats, procédures et archives administratives.',status:'Profil préparé'},
+  {id:'a10',name:'Agent Production & Qualité',dept:'ops',platform:'À connecter',role:'Organiser la production, définir les étapes de réalisation, contrôler les livrables, documenter les écarts et préparer les rapports qualité.',status:'Profil préparé'}
+ ],
+ tasks:[],events:[],memory:[],decisions:[],collabs:[],
+ history:[{id:1,text:'Création de l’espace BYENDA GROUP',date:new Date().toISOString()}],
+ settings:{company:'BYENDA GROUP',director:'Josué Byenda'}
+};
+function mergeSeed(old){
+ const d=old&&typeof old==='object'?old:{};
+ return {...seed,...d,
+  departments:[...seed.departments.map(sd=>({...sd,...((d.departments||[]).find(od=>od.id===sd.id)||{})})),...(Array.isArray(d.departments)?d.departments.filter(od=>!seed.departments.some(sd=>sd.id===od.id)):[])],
+  agents:[...seed.agents,...(Array.isArray(d.agents)?d.agents.filter(a=>!seed.agents.some(s=>s.id===a.id)):[])],
+  tasks:Array.isArray(d.tasks)?d.tasks:[],events:Array.isArray(d.events)?d.events:[],memory:Array.isArray(d.memory)?d.memory:[],decisions:Array.isArray(d.decisions)?d.decisions:[],collabs:Array.isArray(d.collabs)?d.collabs:[],
+  history:Array.isArray(d.history)?d.history:seed.history,settings:{...seed.settings,...(d.settings||{})}
+ };
+}
+let data;try{data=mergeSeed(JSON.parse(localStorage.getItem('byenda_group_data')))}catch(e){data=mergeSeed(null)}
+let calDate=new Date();calDate.setDate(1);
+const pageNames={workshop:'Atelier des agents',dashboard:'Tableau de bord',control:'Centre de contrôle',missions:'Gestion des missions',calendar:'Calendrier intelligent',memory:'Mémoire de l’entreprise',departments:'Départements',agents:'Agents IA',history:'Historique',settings:'Paramètres'};
+function save(){localStorage.setItem('byenda_group_data',JSON.stringify(data));render()}
+function log(text){data.history.unshift({id:Date.now(),text,date:new Date().toISOString()});data.history=data.history.slice(0,250)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function dateFmt(s){if(!s)return 'Non définie';let d=new Date(s+'T12:00:00');return d.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'})}
+function dateTime(s){return new Date(s).toLocaleString('fr-FR',{dateStyle:'medium',timeStyle:'short'})}
+function deptName(id){return data.departments.find(d=>d.id===id)?.name||'Non affecté'}
+function showPage(id){if(!pageNames[id])return;document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('nav button[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));document.getElementById('heading').textContent=pageNames[id];document.getElementById('crumb').textContent=pageNames[id].toUpperCase();render();window.scrollTo({top:0,behavior:'smooth'})}
+document.getElementById('nav').addEventListener('click',e=>{const b=e.target.closest('button[data-page]');if(b){e.preventDefault();showPage(b.dataset.page)}});
+function isLate(t){return t.status!=='Terminée'&&t.due&&t.due<new Date().toISOString().slice(0,10)}
+function agentRow(a){return `<div class="agent"><div class="ico">◈</div><div class="grow"><b>${esc(a.name)}</b><small>${esc(a.platform)} · ${esc(deptName(a.dept))}<br>${esc(a.role)}</small></div><span class="tag ${a.link?'pending':'off'}">${esc(a.status||'Profil préparé')}</span>${a.link?`<a class="btn small" href="${esc(a.link)}" target="_blank" rel="noopener">Ouvrir ↗</a>`:''}</div>`}
+function taskRow(t){let status=t.status||(t.done?'Terminée':'À faire');return `<div class="task ${status==='Terminée'?'done':''}"><input aria-label="Terminer la mission" type="checkbox" ${status==='Terminée'?'checked':''} onchange="toggleTask('${esc(t.id)}',this.checked)"><div class="grow"><b>${esc(t.title)}</b><small>${esc(deptName(t.dept))} · ${esc(t.assignee||'À attribuer')} · ${esc(t.priority||'Normale')} · Échéance : ${dateFmt(t.due)}${t.notes?' · '+esc(t.notes):''}</small></div><select aria-label="Statut" style="width:auto;max-width:112px;padding:7px;font-size:11px" onchange="setTaskStatus('${esc(t.id)}',this.value)"><option ${status==='À faire'?'selected':''}>À faire</option><option ${status==='En cours'?'selected':''}>En cours</option><option ${status==='Terminée'?'selected':''}>Terminée</option></select>${isLate(t)?'<span class="tag danger">En retard</span>':''}</div>`}
+function eventRows(items){return items.map(x=>`<div class="event"><div class="ico">${x.kind==='Réunion'?'▣':'◷'}</div><div class="grow"><b>${esc(x.title)}</b><small>${dateFmt(x.date)}${x.time?' · '+esc(x.time):''} · ${esc(x.kind||'Événement')}${x.notes?' · '+esc(x.notes):''}</small></div></div>`).join('')||'<div class="empty">Aucun élément planifié.</div>'}
+function renderTasks(){let f=document.getElementById('task-filter')?.value||'all',p=document.getElementById('priority-filter')?.value||'all',q=(document.getElementById('task-search')?.value||'').toLowerCase();let arr=data.tasks.filter(t=>(f==='all'||(t.status||(t.done?'Terminée':'À faire'))===f)&&(p==='all'||(t.priority||'Normale')===p)&&(`${t.title} ${t.notes||''} ${t.assignee||''}`).toLowerCase().includes(q));document.getElementById('task-list').innerHTML=arr.map(taskRow).join('')||'<div class="empty">Aucune mission correspondant au filtre.</div>'}
+function renderMemory(){let q=(document.getElementById('memory-search')?.value||'').toLowerCase();let arr=data.memory.filter(m=>(m.title+' '+m.content+' '+m.category).toLowerCase().includes(q));document.getElementById('memory-count').textContent=arr.length+' élément(s)';document.getElementById('memory-list').innerHTML=arr.map(m=>`<div class="memory-card"><div class="rowwrap"><b>${esc(m.title)}</b><span class="tag">${esc(m.category)}</span><span class="muted">${dateTime(m.date)}</span></div><p>${esc(m.content)}</p><button class="btn red small" onclick="deleteMemory('${esc(m.id)}')">Supprimer</button></div>`).join('')||'<div class="empty">La mémoire est vide. Ajoute les informations fondatrices de ton entreprise.</div>'}
+function renderCalendar(){
+ const y=calDate.getFullYear(),m=calDate.getMonth(),first=new Date(y,m,1),start=(first.getDay()+6)%7,days=new Date(y,m+1,0).getDate(),prevDays=new Date(y,m,0).getDate();
+ document.getElementById('month-title').textContent=first.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+ const heads=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];let out=heads.map(x=>`<div class="cal-head">${x}</div>`).join('');
+ for(let i=0;i<42;i++){let day=i-start+1,dt,muted=false;if(day<1){dt=new Date(y,m-1,prevDays+day);muted=true}else if(day>days){dt=new Date(y,m+1,day-days);muted=true}else dt=new Date(y,m,day);let key=dt.toISOString().slice(0,10);let count=data.events.filter(e=>e.date===key).length+data.tasks.filter(t=>t.due===key&&t.status!=='Terminée').length;let today=key===new Date().toISOString().slice(0,10);out+=`<div class="cal-day ${muted?'mutedday':''} ${today?'today':''}"><strong>${dt.getDate()}</strong>${count?`<small>${count} élément(s)</small>`:''}</div>`}
+ document.getElementById('calendar-grid').innerHTML=out;
+ let todayKey=new Date().toISOString().slice(0,10);let items=[...data.events.map(e=>({...e,kind:e.kind||'Événement'})),...data.tasks.filter(t=>t.due&&t.status!=='Terminée').map(t=>({id:t.id,title:t.title,date:t.due,time:'',kind:'Échéance de mission',notes:t.assignee||''}))].filter(x=>x.date>=todayKey).sort((a,b)=>(a.date+(a.time||'')).localeCompare(b.date+(b.time||'')));
+ document.getElementById('agenda-list').innerHTML=eventRows(items);
+}
+
+function populateCollabAgents(){
+ const el=document.getElementById('collab-agents');if(!el)return;
+ const selected=Array.from(el.selectedOptions).map(o=>o.value);
+ el.innerHTML=data.agents.map(a=>`<option value="${esc(a.id)}">${esc(a.name)} — ${esc(a.platform)}</option>`).join('');
+ selected.forEach(id=>{const o=Array.from(el.options).find(x=>x.value===id);if(o)o.selected=true});
+}
+function makeAgentPrompt(c,step){
+ const a=data.agents.find(x=>x.id===c.agentIds[step]);if(!a)return '';
+ const previous=step>0?(c.outputs[step-1]||'Réponse précédente non encore renseignée.'):'Aucun résultat précédent.';
+ return `BYENDA GROUP — DOSSIER DE COLLABORATION\nMission : ${c.title}\nPriorité : ${c.priority}\n\nOBJECTIF ET CONTEXTE :\n${c.brief}\n\nTON RÔLE : ${a.name}\nMandat : ${a.role}\n\nÉLÉMENTS TRANSMIS PAR L'AGENT PRÉCÉDENT :\n${previous}\n\nINSTRUCTIONS :\n- Travaille uniquement dans ton domaine de compétence.\n- Tiens compte du brief et du travail précédent sans le recopier aveuglément.\n- Signale clairement les hypothèses, informations manquantes et risques.\n- Donne un résultat structuré, concret et exploitable.\n- Termine par « Transmission au prochain agent » avec les éléments utiles.\n- Ne prétends pas avoir effectué d'action externe ou de vérification que tu n'as pas réellement faite.\n\nLIVRABLE ATTENDU : résultat, points à vérifier, recommandations et transmission.`;
+}
+function copyText(txt){
+ if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(()=>alert('Consigne copiée. Colle-la dans la conversation de l’agent.')).catch(()=>fallbackCopy(txt))}
+ else fallbackCopy(txt);
+}
+function fallbackCopy(txt){const t=document.createElement('textarea');t.value=txt;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.focus();t.select();try{document.execCommand('copy');alert('Consigne copiée. Colle-la dans la conversation de l’agent.')}catch(e){alert('Copie automatique indisponible. Sélectionne et copie le texte affiché.')}t.remove()}
+function openAgentForStep(id,step){
+ const c=data.collabs.find(x=>x.id===id);if(!c)return;const a=data.agents.find(x=>x.id===c.agentIds[step]);if(!a)return;
+ c.currentStep=step;c.status='En cours';c.updated=new Date().toISOString();save();
+ const prompt=makeAgentPrompt(c,step);copyText(prompt);
+ const url=a.link||(String(a.platform||'').toLowerCase().includes('chatgpt')?'https://chatgpt.com/':'https://claude.ai/new');
+ window.open(url,'_blank','noopener');
+}
+function prepareHandoff(id,step){
+ const c=data.collabs.find(x=>x.id===id);if(!c)return;
+ const output=prompt('Colle ici la réponse complète reçue de '+(data.agents.find(a=>a.id===c.agentIds[step])?.name||'l’agent')+':');
+ if(output===null)return;
+ if(!output.trim()){alert('Ajoute la réponse de l’agent avant de passer le relais.');return}
+ c.outputs[step]=output.trim();c.currentStep=Math.min(step+1,c.agentIds.length-1);c.status=step===c.agentIds.length-1?'À valider par la direction':'En attente du prochain agent';c.updated=new Date().toISOString();
+ log('Résultat reçu dans le dossier : '+c.title);save();
+ if(step<c.agentIds.length-1){if(confirm('Réponse enregistrée. Préparer et ouvrir le prochain agent ?'))openAgentForStep(id,step+1)}
+ else alert('Dernière réponse enregistrée. Le dossier attend maintenant ta validation.');
+}
+function renderCollabs(){
+ const el=document.getElementById('collab-list');if(!el)return;
+ document.getElementById('collab-count').textContent=data.collabs.length+' dossier(s)';
+ el.innerHTML=data.collabs.map(c=>{
+  const idx=Math.min(c.currentStep||0,c.agentIds.length-1),agent=data.agents.find(a=>a.id===c.agentIds[idx]),done=c.outputs.filter(Boolean).length;
+  const chain=c.agentIds.map((aid,i)=>{const a=data.agents.find(x=>x.id===aid);return `<div class="dept"><div class="ico">${i<done?'✓':i===idx?'➜':'○'}</div><div class="grow"><b>${esc(a?.name||'Agent supprimé')}</b><small>${i<done?'Résultat enregistré':i===idx?'Étape actuelle':'À venir'}</small></div>${i===idx?'<span class="tag pending">Actif</span>':''}</div>`}).join('');
+  const outputs=c.outputs.map((o,i)=>o?`<div class="memory-card"><b>Réponse — ${esc(data.agents.find(a=>a.id===c.agentIds[i])?.name||'Agent')}</b><p>${esc(o)}</p></div>`:'').join('');
+  return `<div class="memory-card"><div class="rowwrap"><b>${esc(c.title)}</b><span class="tag">${esc(c.priority)}</span><span class="tag pending">${esc(c.status)}</span></div><p>${esc(c.brief)}</p><div class="muted">Créé le ${dateTime(c.created)} · Étape ${done+1}/${c.agentIds.length}</div><div class="progress"><i style="width:${done/c.agentIds.length*100}%"></i></div>${chain}${outputs}<div class="rowwrap" style="margin-top:12px"><button class="btn small" onclick="openAgentForStep('${esc(c.id)}',${idx})">${done===c.agentIds.length?'Reprendre le dossier':'Envoyer au '+esc(agent?.name||'agent')}</button><button class="btn light small" onclick="prepareHandoff('${esc(c.id)}',${idx})">Enregistrer réponse / relais</button><button class="btn light small" onclick="copyText(makeAgentPrompt(data.collabs.find(x=>x.id==='${esc(c.id)}'),${idx}))">Copier la consigne</button><button class="btn red small" onclick="deleteCollab('${esc(c.id)}')">Supprimer</button></div></div>`;
+ }).join('')||'<div class="empty">Aucun dossier de collaboration. Crée une mission multi-agents ci-dessus.</div>';
+}
+function deleteCollab(id){if(!confirm('Supprimer ce dossier de collaboration ?'))return;data.collabs=data.collabs.filter(c=>c.id!==id);log('Dossier de collaboration supprimé');save()}
+document.getElementById('collab-form').onsubmit=e=>{
+ e.preventDefault();const f=new FormData(e.target),ids=Array.from(document.getElementById('collab-agents').selectedOptions).map(o=>o.value);
+ if(!ids.length){alert('Choisis au moins un agent.');return}
+ const c={id:String(Date.now()),title:f.get('title'),brief:f.get('brief'),priority:f.get('priority'),agentIds:ids,currentStep:0,outputs:[],status:'Prêt à démarrer',created:new Date().toISOString(),updated:new Date().toISOString()};
+ data.collabs.unshift(c);log('Dossier multi-agents créé : '+c.title);e.target.reset();save();alert('Dossier créé. Tu peux maintenant envoyer la mission au premier agent.');
+};
+
+function render(){
+ const open=data.tasks.filter(t=>(t.status||(t.done?'Terminée':'À faire'))!=='Terminée'),late=open.filter(isLate),todayKey=new Date().toISOString().slice(0,10);
+ const upcoming=[...data.events.filter(e=>e.date>=todayKey),...data.tasks.filter(t=>t.due>=todayKey&&t.status!=='Terminée').map(t=>({title:t.title,date:t.due,kind:'Échéance de mission'}))].sort((a,b)=>a.date.localeCompare(b.date));
+ document.getElementById('stat-open').textContent=open.length;document.getElementById('stat-late').textContent=late.length;document.getElementById('stat-agents').textContent=data.agents.length;document.getElementById('stat-events').textContent=upcoming.length;
+ document.getElementById('control-todo').textContent=data.tasks.filter(t=>(t.status||'À faire')==='À faire').length;document.getElementById('control-progress').textContent=data.tasks.filter(t=>t.status==='En cours').length;document.getElementById('control-done').textContent=data.tasks.filter(t=>(t.status||(t.done?'Terminée':'À faire'))==='Terminée').length;document.getElementById('control-memory').textContent=data.memory.length;
+ document.getElementById('dash-tasks').innerHTML=open.slice(0,6).map(taskRow).join('')||'<div class="empty">Aucune mission ouverte.</div>';
+ let alerts=[];if(late.length)alerts.push(`<div class="alert red"><b>${late.length} mission(s) en retard.</b> Consulte les échéances et réattribue les priorités.</div>`);if(!data.memory.length)alerts.push('<div class="alert">La mémoire de l’entreprise est encore vide. Ajoute sa vision, ses règles et ses méthodes.</div>');if(!data.events.length)alerts.push('<div class="alert">Aucun événement planifié dans le calendrier.</div>');if(!alerts.length)alerts.push('<div class="alert green">Aucune alerte majeure détectée dans les données enregistrées.</div>');
+ document.getElementById('dash-alerts').innerHTML=alerts.slice(0,3).join('');document.getElementById('control-alerts').innerHTML=alerts.join('');
+ document.getElementById('dash-events').innerHTML=eventRows(upcoming.slice(0,5));
+ let hist=data.history.slice(0,8).map(h=>`<div class="history"><div class="ico">◷</div><div class="grow"><b>${esc(h.text)}</b><small>${dateTime(h.date)}</small></div></div>`).join('')||'<div class="empty">Aucune activité.</div>';document.getElementById('dash-history').innerHTML=hist;document.getElementById('history-list').innerHTML=data.history.slice(0,100).map(h=>`<div class="history"><div class="ico">◷</div><div class="grow"><b>${esc(h.text)}</b><small>${dateTime(h.date)}</small></div></div>`).join('')||'<div class="empty">Aucune activité.</div>';
+ document.getElementById('agent-list').innerHTML=data.agents.map(agentRow).join('');document.getElementById('department-list').innerHTML=data.departments.map(d=>`<div class="mini"><div class="ico">${esc(d.icon)}</div><h3>${esc(d.name)}</h3><p>${esc(d.desc)}</p><div class="progress"><i style="width:${Math.min(100,data.tasks.filter(t=>t.dept===d.id&&t.status==='Terminée').length/(data.tasks.filter(t=>t.dept===d.id).length||1)*100)}%"></i></div><p style="margin-top:8px">${data.agents.filter(a=>a.dept===d.id).length} agent(s) · ${data.tasks.filter(t=>t.dept===d.id).length} mission(s)</p></div>`).join('');
+ document.getElementById('decision-list').innerHTML=data.decisions.slice(0,30).map(d=>`<div class="history"><div class="ico">◆</div><div class="grow"><b>${esc(d.title)}</b><small>${esc(d.content)} · ${dateTime(d.date)}</small></div></div>`).join('')||'<div class="empty">Aucune décision enregistrée.</div>';
+ document.getElementById('company-name').value=data.settings.company;document.getElementById('director-name').value=data.settings.director;document.getElementById('side-director').textContent=data.settings.director;
+ renderTasks();renderMemory();renderCalendar();renderCollabs();populateCollabAgents();
+}
+function toggleTask(id,v){let t=data.tasks.find(x=>x.id===id);if(t){t.status=v?'Terminée':'À faire';t.done=v;log((v?'Mission terminée : ':'Mission rouverte : ')+t.title);save()}}
+function setTaskStatus(id,status){let t=data.tasks.find(x=>x.id===id);if(t){t.status=status;t.done=status==='Terminée';log('Statut modifié : '+t.title+' → '+status);save()}}
+function changeMonth(n){calDate.setMonth(calDate.getMonth()+n);renderCalendar()}
+function deleteMemory(id){if(!confirm('Supprimer cet élément de la mémoire ?'))return;data.memory=data.memory.filter(m=>m.id!==id);log('Élément supprimé de la mémoire');save()}
+function openModal(type){
+ const form=document.getElementById('modal-form'),title=document.getElementById('modal-title');let body='';
+ if(type==='task'){title.textContent='Créer une mission';body=`<div class="field"><label>Intitulé de la mission</label><input name="title" required placeholder="Ex. Préparer le dossier de présentation"></div><div class="field"><label>Département</label><select name="dept">${data.departments.map(d=>`<option value="${esc(d.id)}">${esc(d.name)}</option>`).join('')}</select></div><div class="field"><label>Responsable</label><select name="assignee"><option>Josué Byenda</option>${data.agents.map(a=>`<option>${esc(a.name)}</option>`).join('')}</select></div><div class="field"><label>Priorité</label><select name="priority"><option>Normale</option><option>Urgente</option><option>Haute</option><option>Basse</option></select></div><div class="field"><label>Statut</label><select name="status"><option>À faire</option><option>En cours</option></select></div><div class="field"><label>Date limite</label><input type="date" name="due"></div><div class="field"><label>Consignes et résultat attendu</label><textarea name="notes" placeholder="Décris le résultat attendu, les contraintes et les étapes…"></textarea></div>`}
+ else if(type==='event'){title.textContent='Ajouter un événement';body=`<div class="field"><label>Nom de l'événement</label><input name="title" required placeholder="Ex. Réunion de planification"></div><div class="field"><label>Type</label><select name="kind"><option>Réunion</option><option>Rendez-vous</option><option>Échéance</option><option>Rappel</option><option>Événement</option></select></div><div class="field"><label>Date</label><input type="date" name="date" required></div><div class="field"><label>Heure (facultatif)</label><input type="time" name="time"></div><div class="field"><label>Notes</label><textarea name="notes"></textarea></div>`}
+ else if(type==='agent'){title.textContent='Ajouter un agent';body=`<div class="field"><label>Nom de l'agent</label><input name="name" required></div><div class="field"><label>Plateforme</label><input name="platform" placeholder="Claude, ChatGPT, autre…"></div><div class="field"><label>Département</label><select name="dept">${data.departments.map(d=>`<option value="${esc(d.id)}">${esc(d.name)}</option>`).join('')}</select></div><div class="field"><label>Mandat et responsabilités</label><textarea name="role" required></textarea></div>`}
+ else if(type==='decision'){title.textContent='Enregistrer une décision';body=`<div class="field"><label>Titre de la décision</label><input name="title" required></div><div class="field"><label>Décision et justification</label><textarea name="content" required></textarea></div>`}
+ form.innerHTML=body+`<div class="actions"><button type="button" class="btn light" onclick="closeModal()">Annuler</button><button class="btn">Enregistrer</button></div>`;
+ form.onsubmit=e=>{e.preventDefault();let f=new FormData(form);if(type==='task'){data.tasks.unshift({id:String(Date.now()),title:f.get('title'),dept:f.get('dept'),assignee:f.get('assignee'),priority:f.get('priority'),status:f.get('status'),due:f.get('due'),notes:f.get('notes'),done:false});log('Mission créée : '+f.get('title'))}
+ else if(type==='event'){data.events.push({id:String(Date.now()),title:f.get('title'),kind:f.get('kind'),date:f.get('date'),time:f.get('time'),notes:f.get('notes')});log('Événement planifié : '+f.get('title'))}
+ else if(type==='agent'){data.agents.push({id:String(Date.now()),name:f.get('name'),platform:f.get('platform')||'À connecter',dept:f.get('dept'),role:f.get('role'),status:'Profil préparé'});log('Agent ajouté : '+f.get('name'))}
+ else if(type==='decision'){data.decisions.unshift({id:String(Date.now()),title:f.get('title'),content:f.get('content'),date:new Date().toISOString()});log('Décision enregistrée : '+f.get('title'))}
+ closeModal();save()};
+ document.getElementById('modal').classList.add('show');
+}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+document.getElementById('memory-form').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target);data.memory.unshift({id:String(Date.now()),title:f.get('title'),category:f.get('category'),content:f.get('content'),date:new Date().toISOString()});log('Mémoire enrichie : '+f.get('title'));e.target.reset();save();alert('Information enregistrée dans la mémoire de BYENDA GROUP.')};
+function saveSettings(){data.settings.company=document.getElementById('company-name').value.trim()||'BYENDA GROUP';data.settings.director=document.getElementById('director-name').value.trim()||'Directeur général';log('Paramètres de direction modifiés');save();alert('Paramètres enregistrés sur cet appareil.')}
+function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='byenda-group-sauvegarde.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function importData(e){let file=e.target.files[0];if(!file)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.departments||!d.agents||!d.tasks)throw Error();data=mergeSeed(d);log('Sauvegarde importée');save();alert('Sauvegarde importée.')}catch(err){alert('Fichier invalide ou incompatible.')}e.target.value=''};r.readAsText(file)}
+document.getElementById('today').textContent=new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+render();
+</script>
+</body></html>

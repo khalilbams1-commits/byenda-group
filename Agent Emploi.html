@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agent Emploi</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f3f6fb;--card:rgba(255,255,255,.86);--tx:#14213d;--mu:#5d6b85;--ac:#1d4ed8;--ac2:#fff;--bd:#cfd9ec;--in:#f8faff;--ok:#15803d;--no:#b45309}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0b1324;--card:rgba(18,30,55,.76);--tx:#eaf0ff;--mu:#9fb0d0;--ac:#60a5fa;--ac2:#06142e;--bd:#27406e;--in:#0e1930;--ok:#4ade80;--no:#fbbf24}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0b1324;--card:rgba(18,30,55,.76);--tx:#eaf0ff;--mu:#9fb0d0;--ac:#60a5fa;--ac2:#06142e;--bd:#27406e;--in:#0e1930;--ok:#4ade80;--no:#fbbf24}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 10% 5%,rgba(59,130,246,.35),transparent 45%),radial-gradient(circle at 95% 30%,rgba(245,158,11,.22),transparent 40%),repeating-linear-gradient(0deg,rgba(59,130,246,.07) 0 1px,transparent 1px 36px),repeating-linear-gradient(90deg,rgba(59,130,246,.07) 0 1px,transparent 1px 36px),var(--bg)}
+main{max-width:600px;margin:0 auto;padding:16px}
+header{padding:24px 4px 16px}header span{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ac)}header p{margin:8px 0 0;color:var(--mu)}
+h1{font:700 38px/1.05 Georgia,"Times New Roman",serif;margin:6px 0 0}
+h2{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin:0 0 8px}
+.card{background:var(--card);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--bd);border-radius:18px;padding:16px;margin-bottom:14px}
+textarea,input,select{width:100%;background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:10px;font:inherit;font-size:15px}
+textarea{min-height:130px;resize:vertical}#cv{min-height:200px}
+button{background:transparent;color:var(--tx);border:1px solid var(--ac);border-radius:10px;padding:9px 12px;font:inherit;font-size:14px;cursor:pointer;margin:8px 6px 0 0}
+button.p{background:var(--ac);color:var(--ac2);font-weight:600;width:100%;margin:12px 0 0;padding:12px}button:disabled{opacity:.5}
+#msg{font-size:13px;color:var(--mu);margin-top:8px}
+.score{font:700 44px/1 Georgia,serif;color:var(--ac)}.verdict{font-weight:600;margin-left:8px}
+ul{margin:4px 0 10px;padding-left:20px}li{margin:3px 0}.ok li::marker{color:var(--ok)}.no li::marker{color:var(--no)}
+.note{font-size:13px;color:var(--mu)}
+#res{display:none}
+.of{border-top:1px solid var(--bd);padding:12px 0}.of:first-of-type{border-top:0}.of b{display:block}.of small{display:block;color:var(--mu)}
+.chip{display:inline-block;font-size:12px;border:1px solid var(--no);color:var(--no);border-radius:99px;padding:1px 8px;margin:6px 6px 0 0}
+.of a,.src a{color:var(--ac)}.src{font-size:14px;margin:6px 0 0}
+</style></head><body><main>
+<header><span>Veille · CV · Candidature</span><h1>Agent Emploi</h1><p>Colle une offre : l’agent juge si elle te correspond, adapte ton CV sans rien inventer et prépare ta lettre.</p></header>
+
+<div class="card"><h2>1. Mon profil (enregistré sur cet appareil)</h2>
+<textarea id="cv"></textarea></div>
+
+<div class="card"><h2>Offres repérées le 18 novembre 2026</h2><div id="offs"></div>
+<p class="note">Mes recherches ont surtout renvoyé des offres déjà expirées. Celles-ci sont les plus proches de ton profil, mais aucune date limite n’a pu être confirmée : vérifie-la sur la page de l’offre avant de postuler.</p>
+<h2 style="margin-top:12px">Sources à consulter chaque semaine</h2>
+<p class="src"><a href="https://reliefweb.int/jobs?search=civil%20engineer%20congo" target="_blank" rel="noopener">ReliefWeb ↗</a> · <a href="https://humanitairehub.com/en/" target="_blank" rel="noopener">Humanitaire Hub ↗</a> · <a href="https://untalent.org/jobs/in-engineering/contract-all/congo-kinshasa" target="_blank" rel="noopener">UNTalent RDC ↗</a> · <a href="https://www.emploi.cd/" target="_blank" rel="noopener">Emploi.cd ↗</a> · <a href="https://www.optioncarriere.cd/emploi-humanitaire.html?cp=f" target="_blank" rel="noopener">Option Carrière ↗</a> · <a href="https://unjobs.org/duty_stations/cod" target="_blank" rel="noopener">UNjobs RDC ↗</a> · <a href="https://consult.africa/pays/cd/" target="_blank" rel="noopener">Consult.africa (AMI État et bailleurs) ↗</a> · <a href="https://www.celluleinfra.org" target="_blank" rel="noopener">Cellule Infrastructures ↗</a></p></div>
+
+<div class="card"><h2>2. L’offre</h2>
+<input id="ttl" placeholder="Titre ou organisation (facultatif)">
+<textarea id="offer" style="margin-top:8px" placeholder="Colle ici le texte complet de l’offre ou de l’appel à candidatures"></textarea>
+<button class="p" id="go">Analyser et adapter</button><div id="msg"></div></div>
+
+<div id="res">
+<div class="card"><h2>Verdict</h2><div><span class="score" id="sc"></span><span class="verdict" id="vd"></span></div>
+<p id="why" style="margin:8px 0 0"></p></div>
+<div class="card"><h2>Ce qui joue pour toi</h2><ul class="ok" id="pro"></ul><h2>Ce qui manque ou est faible</h2><ul class="no" id="con"></ul></div>
+<div class="card"><h2>CV adapté (accroche et points à mettre en avant)</h2><textarea id="cvo"></textarea><button data-c="cvo">Copier</button></div>
+<div class="card"><h2>Lettre de motivation</h2><textarea id="let"></textarea><button data-c="let">Copier</button>
+<p class="note">Relis tout avant d’envoyer. Vérifie que chaque information est exacte et garde ta validation finale.</p></div>
+<div class="card"><h2>Envoyer et suivre</h2><input id="to" type="email" placeholder="E-mail de dépôt indiqué dans l’offre (s’il y en a un)"><button class="p" id="mail">Ouvrir mon e-mail avec la lettre</button><button id="track">Ajouter à mes candidatures</button><p class="note">Ton application d’e-mail s’ouvre avec le message prêt : joins ton CV en PDF, relis et envoie toi-même. Pour les portails en ligne (ReliefWeb, UNOPS, etc.), copie le CV et la lettre dans le formulaire.</p></div>
+<div class="card"><h2>Dossier complet et Claude in Chrome</h2><textarea id="coord" style="min-height:70px" placeholder="Mes coordonnées pour les formulaires (téléphone, e-mail, ville) : enregistrées sur cet appareil"></textarea><button id="all">Copier le dossier (CV + lettre)</button><button class="p" id="chr">Copier la consigne pour Claude in Chrome</button><p class="note">Colle la consigne dans Claude in Chrome, sur la page du formulaire de l’offre. Il remplit les champs, mais doit s’arrêter et te demander ton accord avant tout envoi.</p></div>
+</div>
+<div class="card"><h2>Mes candidatures</h2><div id="apps"></div></div>
+<script>
+const $=i=>document.getElementById(i);
+const DEF="Josué Byenda — Ingénieur civil (diplômé le 9 février 2026), architecte, chef de travaux. Basé à Goma, RDC. Se considère débutant.\n\nExpérience :\n- Chef de travaux en RDC : coordination et supervision de chantiers à Goma et à l’intérieur du pays, organisation des équipes, contrôle qualité, suivi d’avancement.\n- Architecte et concepteur : maisons résidentielles plain-pied et R+1, immeuble de quatre appartements à Goma (Himbi), école secondaire à Bweremana (Masisi, Nord-Kivu), plans, rendus 3D, présentations clients.\n- Architecte chez Archimode (Burundi), quelques mois.\n- Stage en génie civil chez SOTRACO, Bujumbura (2 mois) : suivi de travaux, contrôle d’exécution, assistance technique.\n\nCompétences : SketchUp, Archicad, Twinmotion, D5 Render, dessin technique, modélisation 3D, rendu photoréaliste, gestion de chantier, métré et estimation.\nLangues : français courant, anglais bon niveau professionnel, swahili courant.\nCherche : postes en génie civil et construction partout en RDC, y compris humanitaire (ONU, ONG) et projets de l’État.";
+try{$('cv').value=localStorage.getItem('cv')||DEF}catch(e){$('cv').value=DEF}
+$('cv').oninput=()=>{try{localStorage.setItem('cv',$('cv').value)}catch(e){}};
+function fill(id,a){const u=$(id);u.textContent='';(a||[]).forEach(t=>{const l=document.createElement('li');l.textContent=t;u.append(l)})}
+$('go').onclick=async()=>{
+ const off=$('offer').value.trim();if(off.length<80){$('msg').textContent='Colle le texte complet de l’offre.';return}
+ $('go').disabled=true;$('msg').textContent='Analyse en cours…';
+ try{
+  const s=await claude.use('sample');if(!s){$('msg').textContent='Cette fonction n’est pas disponible ici.';return}
+  const p='Tu es conseiller en recrutement pour la RDC et le secteur humanitaire. Compare le PROFIL au texte de l’OFFRE.\nRÈGLES : n’invente jamais une expérience, un diplôme, un outil ou une durée absents du PROFIL. Si une exigence n’est pas remplie, dis-le dans "ecarts". Le candidat est débutant : sois honnête sur les années d’expérience exigées.\nRéponds uniquement en JSON : {"score":0-100,"verdict":"Postuler"|"À tenter"|"Passer","pourquoi":"2 phrases","forts":["..."],"ecarts":["..."],"cv":"accroche de 3 lignes puis 5 à 6 points d’expérience réordonnés selon l’offre et reformulés avec ses mots-clés, tirés uniquement du PROFIL","lettre":"lettre de motivation en français, 180 mots maximum, sobre, concrète, sans formule creuse"}\nPROFIL :\n'+$('cv').value+'\n\nOFFRE ('+($('ttl').value||'sans titre')+') :\n'+off.slice(0,9000);
+  const r=await s.json(p,{modelTier:'default',cache:false});
+  $('sc').textContent=r.score+'/100';$('vd').textContent=r.verdict;$('why').textContent=r.pourquoi;
+  fill('pro',r.forts);fill('con',r.ecarts);$('cvo').value=r.cv;$('let').value=r.lettre;
+  $('res').style.display='block';$('msg').textContent='';$('res').scrollIntoView({behavior:'smooth'});
+ }catch(e){$('msg').textContent='Échec de l’analyse. Réessaie dans un instant.'}
+ finally{$('go').disabled=false}};
+const OFF=[
+{t:'Civil Engineer (poste à distance)',o:'UNOPS · Home based, niveau Associate',s:'Clôture le 1er décembre 2026 selon la liste officielle UNOPS',u:'https://careers.unops.org/careersmarketplace/WidgetOpenPositions',x:'Civil Engineer, UNOPS, home based, niveau Associate. Les annonces UNOPS de ce type demandent en général un diplôme en génie civil et environ 2 ans d’expérience (ou un master), et peuvent imposer une langue de travail précise. Détails de l’annonce non lus : vérifie les exigences et les langues sur la page UNOPS. Clôture : 1er décembre 2026.'},
+{t:'Chargé(e) SWI (Abris, WaSH, Infrastructures)',o:'Conseil Danois pour les Réfugiés (DRC) · Adja/Aru, Ituri',s:'Démarrage prévu en novembre 2026',u:'https://jobbank.dk/job/3138748/',x:'Chargé(e) SWI (Shelter, WaSH et Infrastructures), Conseil Danois pour les Réfugiés, Adja/Aru (Ituri). Mise en œuvre des activités d’abris, WaSH et infrastructures, conception et construction d’infrastructures durables, formation des bâtisseurs communautaires, contrôle qualité, suivi des prestataires. Exigences : diplôme universitaire en ingénierie civile ou rurale, hydraulique ou domaine similaire ; minimum 2 ans d’expérience en abris et WaSH avec des ONG en contexte humanitaire. Début : novembre 2026.'},
+{t:'WASH Officer',o:'Save the Children · Goma, Nord-Kivu',s:'Annonce vue sur Option Carrière, ancienneté non confirmée',u:'https://www.optioncarriere.cd/emploi-humanitaire.html?cp=f',x:'WASH Officer, Save the Children, Goma (Nord-Kivu). Évaluations techniques, conceptions, dessins et devis quantitatifs (BoQ) pour des projets WASH. Les anciennes annonces de ce poste demandaient un diplôme en génie civil ou similaire et environ 3 ans d’expérience WASH sur le terrain, et de bonnes connaissances des approches communautaires.'},
+{t:'Ingénieur spécialiste en réhabilitation et construction',o:'Annonce sur ubscongo.com · Mbankana, RDC',s:'Date de publication inconnue',u:'https://ubscongo.com/job_post/sc-plusieurs-postes-04-en-rdcongo-fn21748242069',x:'Ingénieur spécialiste en réhabilitation et construction, Mbankana, 12 mois renouvelables. Appui technique à la conception, la mise en œuvre et le suivi de travaux de réhabilitation et construction d’écoles et d’infrastructures WASH ; supervision de la qualité ; 80 % du temps sur le terrain. Exigences : diplôme en ingénierie (civile, environnementale, hydrogéologique), minimum 3 ans d’expérience dans des programmes d’eau, d’assainissement ou d’urgence.'}];
+OFF.forEach(f=>{const d=document.createElement('div');d.className='of';const b=document.createElement('b');b.textContent=f.t;const m=document.createElement('small');m.textContent=f.o;const c=document.createElement('span');c.className='chip';c.textContent=f.s+' · date limite à vérifier';
+ const a=document.createElement('a');a.href=f.u;a.target='_blank';a.rel='noopener';a.textContent='Voir l’offre ↗';a.style.marginRight='12px';
+ const g=document.createElement('button');g.textContent='Analyser avec mon profil';g.onclick=()=>{$('ttl').value=f.t+' — '+f.o;$('offer').value=f.x;$('msg').textContent='Résumé chargé. Pour une analyse plus fiable, remplace-le par le texte complet de l’offre.';$('ttl').scrollIntoView({behavior:'smooth'})};
+ d.append(b,m,c,document.createElement('br'),a,g);$('offs').append(d)});
+const ST=['À envoyer','Envoyée','Entretien','Refus','Retenu'];let apps=[];try{apps=JSON.parse(localStorage.getItem('apps')||'[]')}catch(e){}
+function sv(){try{localStorage.setItem('apps',JSON.stringify(apps))}catch(e){}}
+function dr(){const a=$('apps');a.textContent='';if(!apps.length){a.textContent='Aucune candidature suivie pour l’instant.';return}
+ apps.forEach(x=>{const d=document.createElement('div');d.className='of';const b=document.createElement('b');b.textContent=x.t;const m=document.createElement('small');m.textContent='Ajoutée le '+x.d;const s=document.createElement('select');ST.forEach(v=>{const o=document.createElement('option');o.textContent=v;if(v===x.s)o.selected=true;s.append(o)});s.onchange=()=>{x.s=s.value;sv()};const r=document.createElement('button');r.textContent='Supprimer';r.onclick=()=>{apps=apps.filter(z=>z.id!==x.id);sv();dr()};d.append(b,m,s,r);a.append(d)})}
+dr();
+$('track').onclick=()=>{apps.unshift({id:Date.now(),t:$('ttl').value||'Offre sans titre',s:'À envoyer',d:new Date().toLocaleDateString('fr-FR')});sv();dr();$('msg').textContent='Ajoutée à ton suivi.'};
+$('mail').onclick=()=>{const u='mailto:'+encodeURIComponent($('to').value.trim())+'?subject='+encodeURIComponent('Candidature — '+($('ttl').value||'poste'))+'&body='+encodeURIComponent($('let').value);const a=document.createElement('a');a.href=u;a.target='_blank';a.click()};
+try{$('coord').value=localStorage.getItem('coord')||''}catch(e){}
+$('coord').oninput=()=>{try{localStorage.setItem('coord',$('coord').value)}catch(e){}};
+async function cp(t,btn,l){try{await navigator.clipboard.writeText(t);btn.textContent='Copié ✓'}catch(e){btn.textContent='Copie impossible : sélectionne le texte à la main'}setTimeout(()=>btn.textContent=l,2500)}
+$('all').onclick=e=>cp('CV ADAPTÉ\n\n'+$('cvo').value+'\n\nLETTRE DE MOTIVATION\n\n'+$('let').value,e.target,'Copier le dossier (CV + lettre)');
+$('chr').onclick=e=>cp('Tu m’aides à postuler à l’offre « '+($('ttl').value||'cette offre')+' » sur la page ouverte.\n\nRÈGLES :\n- Remplis le formulaire uniquement avec les informations ci-dessous. N’invente rien : si un champ demande une information que je ne t’ai pas donnée, arrête-toi et demande-moi.\n- Ne crée pas de compte, ne paie rien et n’accepte aucune condition sans mon accord.\n- N’appuie JAMAIS sur « Envoyer » ou « Soumettre » : montre-moi d’abord un résumé de ce qui sera envoyé et attends que je dise « valide ».\n\nMES COORDONNÉES :\n'+($('coord').value||'(à me demander)')+'\n\nCV ADAPTÉ :\n'+$('cvo').value+'\n\nLETTRE DE MOTIVATION :\n'+$('let').value,e.target,'Copier la consigne pour Claude in Chrome');
+document.querySelectorAll('button[data-c]').forEach(b=>b.onclick=async()=>{const t=$(b.dataset.c);try{await navigator.clipboard.writeText(t.value);b.textContent='Copié ✓'}catch(e){t.select()}});
+</script></body></html>

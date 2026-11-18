@@ -1,0 +1,9 @@
+{
+  "name": "BYENDA GROUP",
+  "short_name": "BYENDA GROUP",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f3f5f8",
+  "theme_color": "#101827",
+  "description": "Direction, gestion et collaboration assistée des agents BYENDA GROUP"
+}

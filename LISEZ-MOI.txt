@@ -1,0 +1,23 @@
+BYENDA GROUP — VERSION 2.1
+
+NOUVEAUTÉ : ATELIER DE COLLABORATION DES AGENTS
+- Crée un dossier multi-agents.
+- Choisis les agents dans l'ordre de leur intervention.
+- L'application construit une consigne complète pour chaque agent.
+- La consigne est copiée et l'outil Claude ou ChatGPT correspondant s'ouvre.
+- Colle la réponse reçue dans le dossier pour la conserver.
+- Prépare le relais : le résultat précédent est inclus dans la consigne du prochain agent.
+- La direction conserve la validation finale.
+
+IMPORTANT : ce système organise une collaboration avec transmission assistée. Il ne s'agit pas encore d'une exécution autonome par API. Les agents doivent être ouverts dans leur outil IA, et tu colles leurs réponses dans l'application. Les API, un serveur sécurisé et le cloud seront nécessaires pour une collaboration totalement automatique.
+
+OUVRIR SUR IPHONE
+1. Le ZIP doit être décompressé pour obtenir le dossier BYENDA_GROUP_v2.
+2. Pour une application installable sur l'écran d'accueil, le dossier doit être hébergé à une adresse HTTPS.
+3. Ouvre l'adresse HTTPS dans Safari > Partager > Sur l'écran d'accueil.
+4. Si tu ouvres un fichier HTML directement depuis l'aperçu de Fichiers, iOS peut bloquer les scripts ou le stockage local. Utilise une adresse HTTPS dans Safari.
+
+DONNÉES
+- Stockage local au navigateur/appareil.
+- Paramètres > Exporter mes données pour sauvegarder.
+- Pas encore de synchronisation automatique entre appareils.
